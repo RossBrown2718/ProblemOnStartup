@@ -52,13 +52,14 @@ public class DifferentiationGenerator extends JFrame implements KeyListener {
 
 		createAndDifferentiate((int) (3 * Math.random())); // 0 = power, 1 = product, 2 = chain
 
-		shift1 = (int) (750 - 200 * this.numTerms);
+		shift1 = (int) (825 - 200 * this.numTerms);
 		shift2 = 500;
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBackground(Color.BLACK);
 		this.setForeground(Color.WHITE);
-		this.setSize(1840, 1200);
+		this.setBounds(-10, -50, 2000, 1200);
+//		this.setSize(1840, 1200);
 		this.setVisible(true);
 	}
 
@@ -68,7 +69,7 @@ public class DifferentiationGenerator extends JFrame implements KeyListener {
 		Font font = new Font("Serif", Font.BOLD, 150);
 		g2.setFont(font);
 		g2.setColor(Color.WHITE);
-		String problem = this.getProblem();
+		String problem = this.problem;
 		g2.setFont(font);
 		g2.drawString("d", 50 + shift1, 280);
 		g2.drawString("__", 25 + shift1, 285);
@@ -79,7 +80,7 @@ public class DifferentiationGenerator extends JFrame implements KeyListener {
 		tx.setForeground(Color.BLACK);
 		tx.setBackground(Color.WHITE);
 		tx.setFont(font);
-		tx.setBounds(100, 500, 1600, 200);
+		tx.setBounds(100, 500, 1700, 200);
 		tx.addKeyListener(this);
 		cont.add(tx);
 	}
@@ -232,26 +233,6 @@ public class DifferentiationGenerator extends JFrame implements KeyListener {
 		}
 		System.out.println(answer);
 	}
-
-	public void printEm() {
-		System.out.println(problem + "\n" + answer);
-	}
-
-	public String getProblem() {
-		return problem;
-	}
-
-	public void setProblem(String problem) {
-		this.problem = problem;
-	}
-
-	public String getAnswer() {
-		return answer;
-	}
-
-	public void setAnswer(String answer) {
-		this.answer = answer;
-	}
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -261,7 +242,7 @@ public class DifferentiationGenerator extends JFrame implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == 10) {
-			if (tx.getText().equals(this.getAnswer())) {
+			if (tx.getText().equals(this.answer)) {
 				System.exit(0);
 			}
 		}
